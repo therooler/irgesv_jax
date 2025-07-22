@@ -54,9 +54,11 @@ We then build the package with
 cmake --build . --target irgesv_cuda
 ```
 
-Going up a directory and running
+After building, create a fresh session and activate the environement again. Make sure not to load modules,
+otherwise the CUDA paths will be set wrongly and jax will be unable to find the gpu. Navigate to the root folder
+and run
 ```bash
-cd ..
 pytest tests.py
 ```
-should then work. I also provide a benchmark to compare the standard linalgsolve against. 
+which should complete successfully. I also provide a benchmark to compare the standard linalgsolve against
+in `benchmark.py`.

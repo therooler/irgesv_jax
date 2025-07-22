@@ -2,7 +2,7 @@ import pytest
 import jax
 jax.config.update("jax_enable_x64", True)
 import jax.numpy as jnp
-
+print(jax.devices('gpu'))
 from src.irgesv import irgesv
 #Run with pytest -v -s tests.py
 
