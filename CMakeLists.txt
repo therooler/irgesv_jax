@@ -73,7 +73,7 @@ endif()
 # Set JAX_GPU_CUDA to 1 (this is required for jaxlib to compile correctly)
 add_definitions(-DJAX_GPU_CUDA=1)
 # Add libraries
-add_library(hello_world_cuda SHARED 
+add_library(irgesv_cuda SHARED 
 src/irgesv.cu
 src/solver_interface.cc
 ${jax_SOURCE_DIR}/jaxlib/gpu/solver_handle_pool.cc
@@ -82,15 +82,15 @@ ${jax_SOURCE_DIR}/jaxlib/gpu/gpu_kernel_helpers.cc
 )
 # Make sure we can see "thirdparty/gpus" and jax
 # target_include_directories()
-target_include_directories(hello_world_cuda PUBLIC ${CMAKE_SOURCE_DIR} ${jax_SOURCE_DIR})
-# target_include_directories(hello_world_cuda PUBLIC ${XLA_DIR})
+target_include_directories(irgesv_cuda PUBLIC ${CMAKE_SOURCE_DIR} ${jax_SOURCE_DIR})
+# target_include_directories(irgesv_cuda PUBLIC ${XLA_DIR})
 # Set the CUDA architecture
-set_target_properties(hello_world_cuda PROPERTIES 
+set_target_properties(irgesv_cuda PROPERTIES 
 CUDA_ARCHITECTURES "all"
 BUILD_RPATH $ENV{CUDA_ROOT}/lib64
 )
 # Link against CUDA libraries and absl
-target_link_libraries(hello_world_cuda 
+target_link_libraries(irgesv_cuda 
 absl::strings
 absl::status
 absl::statusor
